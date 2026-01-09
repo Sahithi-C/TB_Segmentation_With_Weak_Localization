@@ -24,51 +24,6 @@ tb-segmentation/
 └── tests/             # Unit tests
 ```
 
-## Setup
-
-### 1. Create Virtual Environment
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-### 2. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Verify Installation
-
-```bash
-python -c "import torch; print(f'PyTorch version: {torch.__version__}')"
-```
-
-## Quick Start
-
-### 1. Configure Project
-
-Edit `configs/base_config.yaml` with your settings.
-
-### 2. Preprocess Data
-
-```bash
-python src/scripts/preprocess_data.py --config configs/base_config.yaml
-```
-
-### 3. Train Model
-
-```bash
-python src/scripts/train.py --config configs/training_config.yaml
-```
-
-### 4. Evaluate Model
-
-```bash
-python src/scripts/evaluate.py --model_path results/models/best_model.pth --config configs/eval_config.yaml
-```
-
 ## Datasets
 
 - **TBX11K**: Primary training dataset (~11,200 CXRs)
