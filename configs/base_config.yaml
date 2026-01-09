@@ -1,0 +1,75 @@
+# Base Configuration for TB Segmentation Project
+
+# Model Configuration
+model:
+  name: "unet_modality_specific"
+  encoder: "resnet34"
+  pretrained: true
+  num_classes: 1
+  in_channels: 1
+  features: 64
+
+# Data Configuration
+data:
+  image_size: [512, 512]
+  batch_size: 16
+  num_workers: 4
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  data_root: "data"
+  datasets:
+    - "tbx11k"
+    - "shenzhen"
+    - "montgomery"
+
+# Training Configuration
+training:
+  epochs: 100
+  learning_rate: 0.001
+  optimizer: "adam"
+  scheduler: "cosine"
+  loss: "dice_iou_combined"
+  early_stopping_patience: 10
+  save_dir: "results/models"
+  log_dir: "experiments/training"
+  device: "cuda"  # or "cpu"
+
+# Data Augmentation Configuration
+augmentation:
+  rotation: 15
+  horizontal_flip: true
+  vertical_flip: false
+  contrast_range: [0.8, 1.2]
+  brightness_range: [0.8, 1.2]
+  elastic_transform: false
+
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - "dice"
+    - "iou"
+    - "sensitivity"
+    - "specificity"
+  save_predictions: true
+  generate_visualizations: true
+  output_dir: "results"
+
+# Paths
+paths:
+  data_dir: "data"
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  weak_masks_dir: "data/weak_masks"
+  results_dir: "results"
+  models_dir: "results/models"
+  predictions_dir: "results/predictions"
+  visualizations_dir: "results/visualizations"
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "experiments/training/training.log"
+  use_wandb: false
+  wandb_project: "tb-segmentation"
+

@@ -1,0 +1,66 @@
+# Training Configuration
+# Extends base_config.yaml with training-specific settings
+
+# Model Configuration
+model:
+  name: "unet_modality_specific"
+  encoder: "resnet34"
+  pretrained: true
+  num_classes: 1
+  in_channels: 1
+  features: 64
+
+# Data Configuration
+data:
+  image_size: [512, 512]
+  batch_size: 16
+  num_workers: 4
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  data_root: "data"
+  datasets:
+    - "tbx11k"  # Primary training dataset
+
+# Training Configuration
+training:
+  epochs: 100
+  learning_rate: 0.001
+  optimizer: "adam"
+  optimizer_params:
+    weight_decay: 0.0001
+  scheduler: "cosine"
+  scheduler_params:
+    T_max: 100
+    eta_min: 0.00001
+  loss: "dice_iou_combined"
+  loss_params:
+    dice_weight: 0.5
+    iou_weight: 0.5
+  early_stopping_patience: 10
+  save_dir: "results/models"
+  log_dir: "experiments/training"
+  device: "cuda"
+  resume_from_checkpoint: null  # Path to checkpoint if resuming
+
+# Data Augmentation Configuration
+augmentation:
+  rotation: 15
+  horizontal_flip: true
+  vertical_flip: false
+  contrast_range: [0.8, 1.2]
+  brightness_range: [0.8, 1.2]
+  elastic_transform: false
+
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - "dice"
+    - "iou"
+    - "sensitivity"
+    - "specificity"
+  save_predictions: true
+  generate_visualizations: true
+  output_dir: "results"
+  validate_every_n_epochs: 5
+
