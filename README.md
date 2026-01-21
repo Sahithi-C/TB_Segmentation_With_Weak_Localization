@@ -15,9 +15,21 @@ This project aims to develop a generalizable deep learning model capable of accu
 ```
 tb-segmentation/
 ├── data/              # Dataset storage
+│   ├── raw/          # Raw datasets (TBX11K, Shenzhen, Montgomery)
+│   ├── processed/    # Processed data
+│   └── weak_masks/   # Generated weak localization masks
 ├── src/               # Source code
+│   ├── data/         # Data processing modules
+│   │   └── weak_localization.py  # Bbox-to-mask conversion
+│   ├── models/       # Model architectures
+│   ├── training/     # Training utilities
+│   ├── evaluation/  # Evaluation metrics
+│   └── utils/       # Helper utilities
 ├── configs/           # Configuration files
 ├── notebooks/         # Jupyter notebooks
+│   ├── 01_download_datasets_to_drive.ipynb
+│   ├── 02_explore_datasets.ipynb
+│   └── 03_generate_weak_masks.ipynb
 ├── experiments/       # Experiment tracking
 ├── results/           # Model outputs and results
 ├── docs/              # Documentation
@@ -32,11 +44,29 @@ tb-segmentation/
 
 ## Key Features
 
-- Weak localization mask generation
+- **Weak localization mask generation** - Convert bounding box annotations to segmentation masks
 - Modality-specific pretraining
 - Cross-dataset evaluation
 - Class Activation Maps (CAMs) for interpretability
 - Comprehensive metrics (Dice, IoU, statistical tests)
+
+## Current Status
+
+### ✅ Completed
+- **Weak Localization Module** (`src/data/weak_localization.py`)
+  - Bounding box to mask conversion
+  - Batch processing for entire datasets
+  - Visualization utilities
+  - Successfully generated 8,399 masks from TBX11K dataset
+
+### 🚧 In Progress
+- Data preprocessing pipeline
+- PyTorch Dataset class implementation
+
+### 📋 Planned
+- U-Net model architecture
+- Training framework
+- Cross-dataset evaluation
 
 ## Requirements
 
