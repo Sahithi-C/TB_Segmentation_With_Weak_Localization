@@ -13,7 +13,18 @@ from .weak_localization import (
     visualize_mask_overlay,
 )
 
+from .preprocessing import (
+    load_image,
+    resize_image,
+    normalize_image,
+    apply_window_level,
+    preprocess_image,
+    preprocess_mask,
+    preprocess_image_mask_pair,
+)
+
 __all__ = [
+    # Weak localization
     'parse_bbox_string',
     'validate_bbox',
     'bbox_to_mask',
@@ -22,4 +33,12 @@ __all__ = [
     'generate_masks_for_dataset',
     'visualize_mask_overlay',
     'load_mask',
+    # Preprocessing
+    'load_image',
+    'resize_image',
+    'normalize_image',
+    'apply_window_level',
+    'preprocess_image',
+    'preprocess_mask',
+    'preprocess_image_mask_pair',
 ]

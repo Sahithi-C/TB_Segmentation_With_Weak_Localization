@@ -383,9 +383,9 @@ def visualize_mask_overlay(
         plt.savefig(save_path, bbox_inches='tight', dpi=150)
         logger.info(f"Saved visualization to {save_path}")
     
-    # Show the plot (for Colab/Jupyter notebooks)
+    # Show the plot (for visualizing Colab notebooks)
     plt.show()
-    # Note: Don't close the figure here - let the caller handle it
+    # Note: Not close the figure here - letting the caller handle it
     # This ensures the figure displays properly in Colab
 
 
