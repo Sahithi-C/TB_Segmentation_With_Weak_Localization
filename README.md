@@ -20,7 +20,8 @@ tb-segmentation/
 │   └── weak_masks/   # Generated weak localization masks
 ├── src/               # Source code
 │   ├── data/         # Data processing modules
-│   │   └── weak_localization.py  # Bbox-to-mask conversion
+│   │   ├── weak_localization.py  # Bbox-to-mask conversion
+│   │   └── preprocessing.py      # Image preprocessing utilities
 │   ├── models/       # Model architectures
 │   ├── training/     # Training utilities
 │   ├── evaluation/  # Evaluation metrics
@@ -29,7 +30,8 @@ tb-segmentation/
 ├── notebooks/         # Jupyter notebooks
 │   ├── 01_download_datasets_to_drive.ipynb
 │   ├── 02_explore_datasets.ipynb
-│   └── 03_generate_weak_masks.ipynb
+│   ├── 03_generate_weak_masks.ipynb
+│   └── 04_test_preprocessing.ipynb
 ├── experiments/       # Experiment tracking
 ├── results/           # Model outputs and results
 ├── docs/              # Documentation
@@ -45,6 +47,7 @@ tb-segmentation/
 ## Key Features
 
 - **Weak localization mask generation** - Convert bounding box annotations to segmentation masks
+- **Image preprocessing** - Normalization, resizing, and CXR-specific windowing
 - Modality-specific pretraining
 - Cross-dataset evaluation
 - Class Activation Maps (CAMs) for interpretability
@@ -58,9 +61,13 @@ tb-segmentation/
   - Batch processing for entire datasets
   - Visualization utilities
   - Successfully generated 8,399 masks from TBX11K dataset
+- **Image Preprocessing Module** (`src/data/preprocessing.py`)
+  - Image normalization (min_max, z_score, tanh)
+  - Image resizing utilities
+  - CXR-specific window/level adjustment
+  - Image-mask pair preprocessing
 
 ### In Progress
-- Data preprocessing pipeline
 - PyTorch Dataset class implementation
 
 ### Planned
