@@ -52,18 +52,18 @@ tb-segmentation/
 
 ## Current Status
 
-### ✅ Completed
+### Completed
 - **Weak Localization Module** (`src/data/weak_localization.py`)
   - Bounding box to mask conversion
   - Batch processing for entire datasets
   - Visualization utilities
   - Successfully generated 8,399 masks from TBX11K dataset
 
-### 🚧 In Progress
+### In Progress
 - Data preprocessing pipeline
 - PyTorch Dataset class implementation
 
-### 📋 Planned
+### Planned
 - U-Net model architecture
 - Training framework
 - Cross-dataset evaluation
@@ -72,7 +72,6 @@ tb-segmentation/
 
 - Python 3.8+
 - PyTorch 2.0+
-- CUDA-enabled GPU (recommended)
 - 16GB+ RAM
 
 ## Project Timeline
